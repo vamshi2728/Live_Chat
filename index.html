@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live_Chat — Talk. Meet. Connect.</title>
+    <meta name="description" content="Live_Chat connects you with random people around the world through text, voice and video chat.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="page">
+
+        <header class="topbar">
+            <a href="#" class="logo">💬 <span>Live_Chat</span></a>
+            <div class="online"><span class="online-dot"></span> Online Now</div>
+        </header>
+
+        <main class="hero">
+            <section class="hero-content">
+                <p class="eyebrow">GLOBAL RANDOM CHAT</p>
+
+                <h1>Real People.<br>Real Conversations.</h1>
+
+                <p class="hero-text">
+                    Meet new people from around the world.
+                    No username, no email, no registration.
+                </p>
+
+                <div class="mode-buttons">
+                    <button class="mode-card active" data-mode="video">
+                        <span class="mode-icon">📹</span>
+                        <span>
+                            <strong>Video Chat</strong>
+                            <small>See &amp; talk</small>
+                        </span>
+                    </button>
+
+                    <button class="mode-card" data-mode="voice">
+                        <span class="mode-icon">🎙️</span>
+                        <span>
+                            <strong>Voice Chat</strong>
+                            <small>Hear &amp; talk</small>
+                        </span>
+                    </button>
+
+                    <button class="mode-card" data-mode="text">
+                        <span class="mode-icon">💬</span>
+                        <span>
+                            <strong>Text Chat</strong>
+                            <small>Type &amp; share</small>
+                        </span>
+                    </button>
+                </div>
+
+                <button id="findButton" class="find-button">
+                    <span>👥</span>
+                    Find a Stranger
+                    <span>→</span>
+                </button>
+
+                <p class="selected-text">
+                    Selected: <strong id="selectedMode">Video Chat</strong>
+                </p>
+
+                <div class="features">
+                    <div>
+                        <span>⚡</span>
+                        <strong>Free to start</strong>
+                        <small>No payment needed</small>
+                    </div>
+                    <div>
+                        <span>✓</span>
+                        <strong>No registration</strong>
+                        <small>No username or email</small>
+                    </div>
+                    <div>
+                        <span>🔒</span>
+                        <strong>Privacy focused</strong>
+                        <small>No profile required</small>
+                    </div>
+                    <div>
+                        <span>🌎</span>
+                        <strong>Global community</strong>
+                        <small>Meet people worldwide</small>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            Live_Chat · Talk. Meet. Connect.
+        </footer>
+    </div>
+
+    <!-- Chat screen -->
+    <div id="chatScreen" class="chat-screen hidden">
+
+        <div class="chat-header">
+            <div>
+                <div class="chat-title">
+                    <span class="green-dot"></span>
+                    <span id="chatStatus">Finding a stranger...</span>
+                </div>
+                <div id="chatMode" class="chat-mode">Video Chat</div>
+            </div>
+
+            <button id="closeChat" class="icon-button" title="Close">✕</button>
+        </div>
+
+        <div id="waitingBox" class="waiting-box">
+            <div class="spinner"></div>
+            <h2>Finding a Stranger</h2>
+            <p id="waitingText">Waiting for someone to join...</p>
+            <button id="cancelSearch" class="secondary-button">Cancel</button>
+        </div>
+
+        <div id="videoArea" class="video-area hidden">
+            <div class="remote-video-wrap">
+                <video id="remoteVideo" autoplay playsinline></video>
+                <div id="remotePlaceholder" class="video-placeholder">
+                    <div class="avatar">👤</div>
+                    <p>Stranger</p>
+                </div>
+                <span class="video-label">Stranger</span>
+            </div>
+
+            <div class="local-video-wrap">
+                <video id="localVideo" autoplay muted playsinline></video>
+                <span class="video-label">You</span>
+            </div>
+        </div>
+
+        <div id="voiceArea" class="voice-area hidden">
+            <div class="voice-avatar">👤</div>
+            <h2>Stranger</h2>
+            <p>Voice connection</p>
+            <audio id="remoteAudio" autoplay></audio>
+        </div>
+
+        <div id="textArea" class="text-area hidden">
+            <div id="messages" class="messages">
+                <div class="system-message">You are connected. Say hello 👋</div>
+            </div>
+
+            <form id="messageForm" class="message-form">
+                <input id="messageInput" type="text" maxlength="500" placeholder="Type a message..." autocomplete="off">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <div id="controls" class="controls hidden">
+            <button id="muteButton" class="control-button" title="Mute">🎙️</button>
+            <button id="cameraButton" class="control-button" title="Camera">📹</button>
+            <button id="nextButton" class="next-button">Next Stranger →</button>
+            <button id="endButton" class="end-button">End</button>
+        </div>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
