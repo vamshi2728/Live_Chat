@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://live-chat-server-pukn.onrender.com");
 
 let selectedMode = "video";
 let currentMode = "video";
